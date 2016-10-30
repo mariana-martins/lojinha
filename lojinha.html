@@ -1,0 +1,351 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="bag.png">
+    <title>Lojinha da Mari e do Beto</title>
+    <link href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    {{> nav}}
+    {{#if currentUser}}
+        {{> image_add_form}}
+    {{/if}}
+    {{> presentation}}
+    {{> informations}}
+    {{> products}}
+    {{> footer}}
+</body>
+
+<template name="nav">
+    <nav class="navbar navbar-default ">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#categorias" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right" id="categorias">
+                <ul class="nav navbar-nav">
+                    <li><a href="#motivos">Por que vender?</a></li>
+                    <li><a href="#informacoes">Informações Úteis</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li class="navbar-text login" >{{> loginButtons}}</li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+        <div class="container-fluid navbar-default">
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <img src="mariebeto.jpg" alt="Mari e Beto" class="center-block img-responsive img-couple img-circle">
+                    <h1 class="title-store text-center">Lojinha da Mari e do Beto</h1>
+                </div>
+            </div>
+        </div>
+    </nav>
+</template>
+
+<template name="image_add_form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="admin-form">
+                    <div class="form-group">
+                        <label for="formFileImage" class="desc-form">Adicionar Imagem:</label>
+                        <input type="file" id="formFileImage" name="formFileImage">
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="formOptionType" id="formOptionType1" value="Eletrônicos & Eletrodomésticos" checked>
+                            Eletrônicos & Eletrodomésticos
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="formOptionType" id="formOptionType2" value="Cozinha & Área de Serviço">
+                            Cozinha & Área de Serviço
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="formOptionType" id="formOptionType3" value="Cama, Mesa & Banho">
+                            Cama, Mesa e Banho
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="formOptionType" id="formOptionType4" value="Móveis">
+                            Móveis
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="formOptionType" id="formOptionType5" value="Outros">
+                            Outros
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="formTextName" class="desc-form">Nome do Objeto</label>
+                        <input type="text" class="form-control" placeholder="Nome do Objeto" id="formTextName" name="formTextName">
+                    </div>
+                    <div class="form-group">
+                        <label for="formTextDescription" class="desc-form">Descrição Simples do Produto</label>
+                        <input type="text" class="form-control" placeholder="Sua descrição..." id="formTextDescription" name="formTextDescription">
+                    </div>
+                    <div class="form-group">
+                        <label for="formTextDetails" class="desc-form">Detalhes do Produto</label>
+                        <input type="text" class="form-control" placeholder="Sua descrição..." id="formTextDetails" name="formTextDetails">
+                    </div>
+                    <div class="form-group">
+                        <label for="formTextPrice" class="desc-form">Preço do Produto</label>
+                        <input type="text" class="form-control" placeholder="Preço do Produto" id="formTextPrice" name="formTextPrice">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formTextDimensions" class="desc-form">Dimensões do Produto</label>
+                        <input type="text" class="form-control" placeholder="Dimensões do Produto" id="formTextDimensions" name="formTextDimensions">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formTextColor" class="desc-form">Cor do Produto</label>
+                        <input type="text" class="form-control" placeholder="Cor do Produto" id="formTextColor" name="formTextColor">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formCheckHasManual" class="desc-form">Possui Manual?</label>
+                        <input type="checkbox" class="form-control" placeholder="Possui Manual?" id="formCheckHasManual" name="formCheckHasManual">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formTextBoughtAt" class="desc-form">Onde foi comprado</label>
+                        <input type="text" class="form-control" placeholder="Cor do Produto" id="formTextBoughtAt" name="formTextBoughtAt">
+                    </div>
+
+                    <button type="submit" class="btn btn-warning"><i class="fa fa-floppy-o"></i>Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="presentation">
+    <div class="container-fluid white">
+        <div class="container sale" id="motivos">
+            <div class="row">
+                <div class="col-lg-5 col-md-12">
+                    <h1 class="text-center title motives" >Por que estamos vendendo?</h1>
+                    <p class="text-justify desc">Porque estamos de mudança para a <strong>Nova Zelândia</strong>! Isso mesmo, vamos continuar nossa aventura, que começou em 2015.
+                    Quando vamos? Bem, ainda não sabemos ao certo, mas com certeza até o final de maio estaremos embarcando em um avião. Vamos morar em uma cidade chamada Christchurch, localizada na Ilha Sul (veja no mapa ao lado).
+                    Sabemos que será um desafio muito grande, mas estamos dispostos a encarar. Estamos muito animados!
+                    </p>
+                    <p class="text-justify desc">Como a Nova Zelândia fica do outro lado do mundo, não podemos levar o apartamento todo embora. Além de ser pesado pra caramba, rsrsrs, ficaria muito caro.
+                    Portanto, temos que nos desfazer das coisas, praticar a arte do desapego e seguir em frente! Estamos vendendo vários tipos de produtos, do colchão até os garfos de inox.
+                    Algumas coisas estão super novas e outras nem tanto, mas todas inteiras e bem cuidadas.
+                    </p>
+                    <p class="text-justify desc"><strong>Se você está interessado(a), entre em contato. Teremos prazer em falar com você! Para falar com a gente é só enviar um e-mail ou uma mensagem pelas redes sociais!</strong></p>
+                </div>
+                <div class="col-lg-7 col-md-12">
+                    <div class="embed-responsive embed-responsive-4by3">
+                        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185183.122251504!2d172.4589917806153!3d-43.51305118969766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d322f4863c5ed01%3A0x500ef8684799945!2sChristchurch%2C+Nova+Zel%C3%A2ndia!5e0!3m2!1spt-BR!2sbr!4v1459352585323" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="informations">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="title-white" id="informacoes">Informações Úteis</h1>
+            </div>
+        </div>
+        <div class="row text-justify">
+            <div class="col-lg-4 col-lg-offset-2 ">
+                <p class="desc-white">Sobre a <strong><span class="important">entrega</span></strong> é bem simples: você compra e vem buscar!
+                    Não podemos nos responsabilizar pela entrega, pois estaremos envolvidos com outras partes da mudança para a Nova Zelândia.
+                    Garantimos uma pessoa no local para a retirada do produto.
+                    Para alguns móveis e elétrodomésticos, a retirada deverá ocorrer de segunda a sexta, entre 09h e 17h e sábado entre 9h e 12h, por determinações do condomínio.
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <p class="desc-white">A data e horário de entrega dos produtos serão acordados durante a compra. Sobre <strong><span class="important">os prazos</span></strong>, também é simples: você tem até o final do mês de Maio para retirar o produto. Depois disso viajamos!
+                Por fim, sobre <strong><span class="important">as formas de pagamento</span></strong> iremos aceitar dinheiro à vista ou depósito bancário em contas do Itaú e Banco do Brasil. Caso tenha mais alguma dúvida, entre em contato conosco.
+                </p>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+
+<template name="products">
+    <div class="container-fluid white">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-center title title-product">Produtos</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <p class="text-center desc">Filtros <span class="caret"></span></p>
+                    <hr class="filter">
+                    <ul class="center-block text-center list-inline">
+                        <li><button class="btn btn-default btn-xs products-all">Todos</button></li>
+                        <li><button class="btn btn-danger btn-xs products-filter" value="Eletrônicos & Eletrodomésticos">Eletrônicos & Eletrodomésticos</button></li>
+                        <li><button class="btn btn-warning btn-xs products-filter" value="Cozinha & Área de Serviço">Cozinha & Área de Serviço</button></li>
+                        <li><button class="btn btn-info btn-xs products-filter" value="Outros">Outros</button></li>
+                        <li><button class="btn btn-success btn-xs products-filter" value="Móveis">Móveis</button></li>
+                        <!--<li><button class="btn btn-primary btn-xs products-filter" value="Cama, Mesa & Banho">Cama, Mesa & Banho</button></li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="row products">
+                {{#each products}}
+                    <div class="col-xs-12 col-sm-6  col-lg-4" id="{{_id}}">
+                        <div class="thumbnail">
+                            {{#if image}}
+                            <img class="js-image thumbnail-img" src="{{image.data}}" alt="{{image.name}}">
+                            {{else}}
+                            <img class="js-image thumbnail-img" src="products/{{encode name}}.jpg" alt="{{name}}">
+                            {{/if}}
+
+                            <div class="caption">
+                                <span class="label  {{getProducTypeClass type}}">{{type}}</span>
+                                <p class="first-name text-center"><strong>{{name}}</strong></p>
+                                <hr>
+                                {{#if reserved}}
+                                    <p class="alert-product text-center desc-product">
+                                        <strong>Ops! Este produto já foi reservado para outra pessoa!</strong>
+                                    </p>
+                                    <button type="button" class="center-block btn btn-details btn-xs js-modal" data-toggle="modal" data-target="#modal_{{_id}}">
+                                        <i class="fa fa-plus-square"></i> Mais informações
+                                    </button>
+                                {{else}}
+                                    <div>
+                                        <p class="desc-product text-center">{{description}}</p>
+                                        <!--Button trigger modal -->
+                                        <button type="button" class="center-block btn btn-details btn-xs js-modal" data-toggle="modal" data-target="#modal_{{_id}}">
+                                            <i class="fa fa-plus-square"></i> Mais informações
+                                        </button>
+                                    </div>
+                                {{/if}}
+                                <hr>
+                                {{#if previousPrice}}
+                                  {{#if $neq previousPrice price}}
+                                    <p class="desc-product text-center previous-price">{{previousPrice}}</p>
+                                  {{/if}}
+                                {{/if}}
+                                <p class="desc-product text-center price">{{price}}</p>
+                                {{#if currentUser}}
+                                    <hr>
+                                    <div class="checkbox">
+                                        <label class="text-center center-block reserved">
+                                            <input type="checkbox" id="reserved_{{_id}}" value="reserved" aria-label="reserved" {{formatChecked reserved}}>
+                                            <span>Item reservado!</span>
+                                        </label>
+                                    </div>
+                                    <button class="js-del-image btn btn-warning center-block"><i class="fa fa-trash"></i>Excluir</button>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    {{#each products}}
+    <div class="modal fade" id="modal_{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">Mais informações</h4>
+                </div>
+                <div class="modal-body">
+                    {{#if image}}
+                    <img class="js-image img-responsive thumbnail-img" src="{{image.data}}" alt="{{image.name}}">
+                    {{else}}
+                    <img class="js-image img-responsive thumbnail-img" src="products/{{encode name}}.jpg" alt="{{name}}">
+                    {{/if}}
+                    <p class="first-name text-center"><strong>{{name}}</strong></p>
+                    <hr>
+                    <p class="desc-product text-center">{{details}}</p>
+                    <p class="price text-center">{{price}}</p>
+                    <p class="details-product">Outros detalhes</p>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-4">Dimensões</label>
+                            <div class="col-sm-8">{{productDimensions}}</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Cor</label>
+                            <div class="col-sm-8">{{productColor}}</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Possui manual?</label>
+                            <div class="col-sm-8">{{hasManual}}</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4">Onde foi comprado</label>
+                            <div class="col-sm-8">{{boughtAt}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</template>
+
+
+
+<template name="footer">
+    <div class="container-fluid navbar-default">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="title-store" id="contato">Contato</h1>
+                    <p class="contacts">Envie agora uma mensagem para a gente!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <img src="mari-photo.jpg" alt="Mari" class="img-circle img-contact img-responsive center-block">
+                    <p class="text-center contacts"><u>Mari</u></p>
+                    <p class="text-center contacts"><i class="fa fa-envelope-o"></i>marianamartinsmenezes@gmail.com</p>
+                    <ul class="list-inline text-center">
+                        <li><a href="https://twitter.com/x2003k" class="social" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/x2003k" class="social" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/mariana_martins1991/" class="social" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <img src="beto-photo.png" alt="Beto" class="img-circle img-contact img-responsive center-block">
+                    <p class="text-center contacts"><u>Beto</u></p>
+                    <p class="text-center contacts"><i class="fa fa-envelope-o"></i>robertowm@gmail.com</p>
+                    <ul class="ul-social list-inline text-center">
+                        <li><a href="https://twitter.com/robertowm" class="social" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/robertowm" class="social" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/robertowm/" class="social" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid footer">
+        <div class="row">
+            <p class="text-center ">Developed by <i class="fa fa-heart"></i><a class="porfolio" href="http://mariana-martins.github.io/">Mariana Menezes</a> & <a class="porfolio" href="http://robertowm.github.io/">Roberto Menezes</a></p>
+        </div>
+    </footer>
+</template>
